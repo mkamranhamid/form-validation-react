@@ -57,10 +57,7 @@ class LoginValidatorComponent extends Component {
 
   render() {
     return (
-      <div className="App">
-        name: <strong>{this.state.name}</strong> <br/>
-        type: <strong>{this.state.type}</strong> <br/>
-        placeholder: <strong>{this.state.placeholder}</strong><br/><br/>
+      <div>
         <strong>{this.state.errCheckForMinLength?this.state.errCheckForMinLength:''}</strong> <br/>
         <strong>{this.state.errCheckForValidation?this.state.errCheckForValidation:''}</strong> <br/>
         <input name={this.state.name} type={this.state.type} placeholder={this.state.placeholder} value={this.state.value} onChange={this.handleChange}/>
