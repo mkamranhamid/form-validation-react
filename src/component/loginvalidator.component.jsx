@@ -5,6 +5,7 @@ class LoginValidatorComponent extends Component {
         super(props)
         
          this.state = {
+            showErr:'',
             value:'',
             name: this.props.name,
             type: this.props.type,
@@ -12,7 +13,6 @@ class LoginValidatorComponent extends Component {
           }
 
           this.handleChange = this.handleChange.bind(this);
-          this.handleValue = this.handleValue.bind(this);
     }
 
     static propTypes = {
@@ -21,19 +21,27 @@ class LoginValidatorComponent extends Component {
         placeholder: React.PropTypes.string
     };
 
+    componentWillUpdate(nextProps, nextState){
+        // perform any preparations for an upcoming update
+        // this.handleMin6(nextState.value)
+    }
+
+
+    handleMin6(val){
+        if(val.length < 6){
+            this.setState({showErr : `Err: value must be greater than 6`});
+        } else {
+            this.setState({showErr : ``});
+        }
+    }
+
     handleChange(e){
         this.setState({value : e.target.value});
+        if(this.state.type == 'password'){
+            this.handleMin6(e.target.value)
+        }
     }
-    handleValue(){
-        setTimeout(()=> {
-            if(this.state.value.length<=6){
-                this.setState({err:'less than 6'}
-            }else
-            {
-                this.setState({err:'no err'})
-            }
-        }, 1000);
-    }
+
 
   render() {
     return (
@@ -41,8 +49,8 @@ class LoginValidatorComponent extends Component {
         <h1>KAKA</h1>
         name: <strong>{this.state.name}</strong> <br/>
         type: <strong>{this.state.type}</strong> <br/>
-        placeholder: <strong>{this.state.placeholder}</strong><br/>
-        {this.state.type == 'password'?'password must have length of 6':''} <br/>
+        placeholder: <strong>{this.state.placeholder}</strong><br/><br/>
+        <strong>{this.state.showErr?this.state.showErr:''}</strong> <br/>
         <input name={this.state.name} type={this.state.type} placeholder={this.state.placeholder} value={this.state.value} onChange={this.handleChange}/>
       </div>
     );

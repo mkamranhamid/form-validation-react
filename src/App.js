@@ -9,7 +9,7 @@ class App extends Component {
   
   render() {
     let name = 'kaka';
-    let type = 'text';
+    let type = 'password';
     let placeholder = 'this is shit';
     return (
       <div className="App">
