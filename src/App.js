@@ -16,7 +16,7 @@ class App extends Component {
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
         </div>
-        <LoginValidatorComponent type={type} placeholder={placeholder} name={name}/>
+        <LoginValidatorComponent type={type} placeholder={placeholder} name={name} min={6} validation={true}/>
       </div>
     );
   }
