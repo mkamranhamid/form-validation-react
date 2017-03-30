@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
 
-import LoginValidatorComponent from './component/loginvalidator.component';
+import Login from './component/Login/login';
 
 import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
-  
+  constructor(){
+    super()
+  }
+
   render() {
-    let name = 'kaka';
-    let type = 'password';
-    let placeholder = 'this is shit';
     return (
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
+          <h1>Signin</h1>
         </div>
-        <LoginValidatorComponent type={type} placeholder={placeholder} name={name} min={6} validation={true}/>
+        <Login/>
       </div>
     );
   }
